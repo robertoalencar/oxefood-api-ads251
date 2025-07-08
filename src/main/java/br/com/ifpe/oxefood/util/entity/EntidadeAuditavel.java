@@ -2,14 +2,18 @@ package br.com.ifpe.oxefood.util.entity;
 
 import java.time.LocalDate;
 
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.Column;
+import br.com.ifpe.oxefood.modelo.acesso.Usuario;
 import jakarta.persistence.EntityListeners;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Version;
 import lombok.Getter;
@@ -33,12 +37,14 @@ public abstract class EntidadeAuditavel extends EntidadeNegocio {
     @LastModifiedDate
     private LocalDate dataUltimaModificacao;
 
-    @JsonIgnore
-    @Column
-    private Long criadoPor; // Id do usuário que o criou
+    @CreatedBy
+    @ManyToOne
+    @JoinColumn
+    private Usuario criadoPor; // Usuário que o criou
 
-    @JsonIgnore
-    @Column
-    private Long ultimaModificacaoPor; // Id do usuário que fez a última alteração
+    @LastModifiedBy
+    @ManyToOne
+    @JoinColumn
+    private Usuario ultimaModificacaoPor; // Usuário que fez a última alteração
 
 }
