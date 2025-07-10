@@ -16,7 +16,6 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import br.com.ifpe.oxefood.modelo.acesso.Perfil;
 import br.com.ifpe.oxefood.modelo.seguranca.JwtAuthenticationFilter;
 
 @Configuration
@@ -44,7 +43,7 @@ public class SecurityConfiguration {
 
 
 
-
+                /* 
                 .requestMatchers(HttpMethod.GET, "/api/produto/").hasAnyAuthority(
                     Perfil.ROLE_CLIENTE,
                     Perfil.ROLE_FUNCIONARIO_ADMIN,
@@ -60,7 +59,7 @@ public class SecurityConfiguration {
                   
                 .requestMatchers(HttpMethod.DELETE, "/api/produto/*").hasAnyAuthority(
                     Perfil.ROLE_FUNCIONARIO_ADMIN) //Exclusão de produto
-
+                */
 
 
 
